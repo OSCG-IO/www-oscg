@@ -105,26 +105,24 @@ The <code>info</code> command lists information about the OS or a component
       <b>   Hardware:</b> 16 GB, 8 x Intel Core i7-2820QM @ 2.30GHz
 
 
-   <font size=+1>$ ./io info pg14</font>
+   <font size=+1>$ ./io info pg15</font>
 
       <b>  Project:</b> pg (http://postgresql.org)
-      <b>Component:</b> pg14  14.3 (el8, arm8)
-      <b>      Doc:</b> http://www.postgresql.org/docs/14/
+      <b>Component:</b> pg15  15.1 (Linux amd64 & arm64, OSX)
+      <b>      Doc:</b> http://www.postgresql.org/docs/15/
 
 </pre>
 
 <p>The <code>list</code> command displays installed and available components.  It confirms
-that only the core<br> Postgres server component, in this case <code>pg14</code>, is installed
+that only the core<br> Postgres server component, in this case <code>pg15</code>, is installed
 and enabled by default.
 <pre>
    <font size=+1>$ ./io list</font>
 
         <b>Component     Version       Port    Status      
         ------------  ------------  ------  ------------</b>
-        pg11          11.16                 Not Installed   
-        pg12          12.11                 Not Installed   
-        pg13          13.7                  Not Installed   
-        pg14          14.3          5432    Installed   
+        pg14          14.6                  Not Installed   
+        pg15          15.1            5432  Installed   
 </pre>
 
 <br>
@@ -133,7 +131,7 @@ their assigned ports.
 <pre>     
    <font size=+1>$ ./io status</font>
 
-       pg14    stopped on port 5432
+       pg15    stopped on port 5432
 </pre>
 
 <br>
@@ -141,7 +139,7 @@ The <code>start</code> command will start up whatever servers are installed (in 
 <pre>     
    <font size=+1>$ ./io start</font>
 
-       pg14 starting...
+       pg15 starting...
 </pre>
 
 <br>
@@ -149,14 +147,14 @@ Running the <code>status</code> command displays information about installed ser
 <pre>     
    <font size=+1>$ ./io status</font>
 
-       pg14 running on port 5432
+       pg15 running on port 5432
 </pre>
 
 Now lets use the <code>stop</code> command to shutdown postgres.
 <pre>     
    <font size=+1>$ ./io stop</font>
 
-       pg14 stopping...
+       pg15 stopping...
 </pre>
 
 <br>
@@ -166,21 +164,19 @@ Use the <code>install</code> command to provision additional components such as 
 Using the "--start" option will install and then start PG with the default passwd = 'password'.  Because port 5432
 was in use, we automagically start on port 5433.
 <pre>
-   <font size=+1>$ ./io install pg12 --start</font>
+   <font size=+1>$ ./io install pg14 --start</font>
 
-        Get:2 pg12-12.11-amd
-          Unpacking pg12-12.11-amd.tar.bz2
-          pg12 Installed & Started
+        Get:2 pg14-14.6-amd
+          Unpacking pg14-14.6-amd.tar.bz2
+          pg14 Installed & Started
 
 
    <font size=+1>$ ./io list</font>
 
         Component     Version    Port    Status      
         ------------  --------  ------  ------------
-        pg11          11.16              Not Installed                       
-        pg12          12.11      5433    Installed   
-        pg13          13.7               Not Installed
-        pg14          14.3       5432    Installed   
+        pg14          14.6         5433  Installed   
+        pg15          15.1         5432  Installed   
 
 </pre>
 
@@ -188,25 +184,8 @@ We now run the status command to confirm that both the PG servers are installed.
 <pre>
    <font size=+1>$ ./io status</font>
 
-        pg12 (Started on port 5433)
-        pg14 (Stopped on port 5432)
-</pre>
-
-<br>
-The <code>start</code> command is used to start back up PostgreSQL 14
-<pre>
-   <font size=+1>$ ./io start pg14</font>
-
-       pg14 starting...
-</pre>
-
-<br>
-Running the <code>status</code> command displays information about installed server components.
-<pre>     
-   <font size=+1>$ ./io status</font>
-
-       pg12  (Running on port 5433)
-       pg14  (Running on port 5432)
+        pg14 (Running on port 5433)
+        pg15 (Running on port 5432)
 </pre>
 
 
